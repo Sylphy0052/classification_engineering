@@ -6,11 +6,11 @@ int main(void){
   std::mt19937 mt(rnd());
   std::normal_distribution<> normDist(0.0, 1.0);
 
-  const int dimension=2, eachDataNum=50, clusterNum=2;
+  const int dimension=2, eachDataNum=50, clusterNum=3;
   const double means[clusterNum][dimension]={
-    {-1,-1},{1,1}};
+    {-1,-1},{1,1},{-1,1}};
   const double stddevs[clusterNum][dimension]={
-    {0.5,0.5},{0.5,0.5}};
+    {0.5,0.5},{0.5,0.5},{0.5,0.5}};
 
   std::cout << eachDataNum*clusterNum << "\t" << dimension << std::endl;
 
