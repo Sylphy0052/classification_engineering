@@ -12,9 +12,9 @@ const int centers_number=3;
 
 int main(void){
   // File Name
-  std::string filenameData("2d-Gaussian-2clusters.dat");
+  std::string filenameData("2d-Gaussian-3clusters.dat");
 #ifdef CHECK_ANSWER
-  std::string filenameCorrectCrispMembership("2d-Gaussian-2clusters.correctCrispMembership");
+  std::string filenameCorrectCrispMembership("2d-Gaussian-3clusters.correctCrispMembership");
 #endif
 
   std::string::size_type filenameDataDotPosition=filenameData.find_last_of(".");
@@ -35,7 +35,7 @@ int main(void){
   ifs >> data_dimension;
 
   // FCM constructor
-  Sfcm test(data_dimension, data_number, centers_number, 2.0);
+  Sfcm test(data_dimension, data_number, centers_number, 3.0);
 
   for(int cnt=0;cnt<data_number;cnt++){
     for(int ell=0;ell<data_dimension;ell++){
