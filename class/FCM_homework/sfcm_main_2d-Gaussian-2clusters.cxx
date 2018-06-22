@@ -8,7 +8,7 @@
 #define DIFF_FOR_STOP 1.0E-10
 
 // Setting of Cluster Number
-const int centers_number=2;
+const int centers_number=3;
 
 int main(void){
   // File Name
