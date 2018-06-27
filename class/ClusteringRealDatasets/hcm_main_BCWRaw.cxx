@@ -99,6 +99,11 @@ int main(void){
   test.set_contingencyTable();
   std::cout << "Contingency Table:\n" << test.contingencyTable() << std::endl;
   std::cout << "ARI:" << test.ARI() << std::endl;
+
+  std::ofstream outputfile("result2.txt", std::ios::app);
+  outputfile << test.ARI() << std::endl;
+  outputfile.close();
+
 #endif
 
   std::string filenameResultMembership
