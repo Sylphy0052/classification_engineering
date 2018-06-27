@@ -31,7 +31,7 @@ int main(void){
   int data_number, data_dimension;
   ifs >> data_number;
   ifs >> data_dimension;
-	
+
   Hcm test(data_dimension, data_number, centers_number);
 
   for(int cnt=0;cnt<data_number;cnt++){
@@ -100,7 +100,7 @@ int main(void){
   std::cout << "Contingency Table:\n" << test.contingencyTable() << std::endl;
   std::cout << "ARI:" << test.ARI() << std::endl;
 #endif
-  
+
   std::string filenameResultMembership
     =std::string("HCM-")
     +filenameData.substr(0, filenameDataDotPosition)
