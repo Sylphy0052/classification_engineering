@@ -10,3 +10,4 @@ do
 done
 
 python sample.py
+./remove_file.sh

@@ -30,7 +30,6 @@ def main():
             maped_num = map(str, write_arr)
             write_string = ' '.join(maped_num)
             f.write(write_string + '\n')
-
     print("Finish format dat file")
 if __name__ == '__main__':
     main()

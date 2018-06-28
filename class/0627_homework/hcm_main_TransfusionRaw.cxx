@@ -10,10 +10,10 @@
 const int centers_number=2;
 
 int main(void){
-  std::string filenameData("BanknoteRaw.dat");
+  std::string filenameData("TransfusionRaw.dat");
 #ifdef CHECK_ANSWER
   // std::cout << "AAA" << std::endl;
-  std::string filenameCorrectCrispMembership("Banknote.correctCrispMembership");
+  std::string filenameCorrectCrispMembership("Transfusion.correctCrispMembership");
 #endif
 
   std::string::size_type filenameDataDotPosition=filenameData.find_last_of(".");
@@ -32,8 +32,6 @@ int main(void){
   int data_number, data_dimension;
   ifs >> data_number;
   ifs >> data_dimension;
-
-  std::cout << data_number << std::endl;
 
   Hcm test(data_dimension, data_number, centers_number);
 

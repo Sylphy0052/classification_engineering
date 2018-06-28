@@ -156,6 +156,7 @@ void Hcm::set_crispMembership(void){
     }
     CrispMembership[max_index][k]=1.0;
   }
+	// std::cout << CrispMembership << std::endl;
   return;
 }
 
@@ -200,10 +201,13 @@ Matrix Hcm::contingencyTable(void) const{
 
 double combination(int n, int k){
   if(n<k) return 0.0;
- return boost::math::binomial_coefficient<double>(n, k); 
+ return boost::math::binomial_coefficient<double>(n, k);
 }
 
 double Hcm::ARI(void) const{
+	// std::cout << "Rows: " << ContingencyTable.rows() << std::endl;
+	// std::cout << "Cols: " << ContingencyTable.cols() << std::endl;
+
   double Index=0.0;
   for(int i=0;i<ContingencyTable.rows()-1;i++){
     for(int j=0;j<ContingencyTable.cols()-1;j++){
@@ -211,20 +215,26 @@ double Hcm::ARI(void) const{
     }
   }
   Index=0.5*(Index-ContingencyTable[ContingencyTable.rows()-1][ContingencyTable.cols()-1]);
-  //  std::cout << "Index:" << Index << std::endl;
+   // std::cout << "Index:" << Index << std::endl;
   double ExpectedIndexI=0.0;
-  for(int i=0;i<ContingencyTable.rows()-1;i++){
+	// std::cout << "ExpectedIndexI" << std::endl;
+	for(int i=0;i<ContingencyTable.rows()-1;i++){
     ExpectedIndexI+=combination(ContingencyTable[i][ContingencyTable.cols()-1], 2);
+		// std::cout << combination(ContingencyTable[i][ContingencyTable.cols()-1], 2) << std::endl;
   }
-  //  std::cout << "ExpectedIndexI:" << ExpectedIndexI << std::endl;
+   // std::cout << "ExpectedIndexI:" << ExpectedIndexI << std::endl;
   double ExpectedIndexJ=0.0;
+	// std::cout << "ExpectedIndexI" << std::endl;
   for(int j=0;j<ContingencyTable.cols()-1;j++){
     ExpectedIndexJ+=combination(ContingencyTable[ContingencyTable.rows()-1][j], 2);
+		// std::cout << combination(ContingencyTable[ContingencyTable.rows()-1][j], 2) << std::endl;
   }
-  //  std::cout << "ExpectedIndexJ:" << ExpectedIndexJ << std::endl;
+   // std::cout << "ExpectedIndexJ:" << ExpectedIndexJ << std::endl;
   double ExpectedIndex=ExpectedIndexI*ExpectedIndexJ/combination(ContingencyTable[ContingencyTable.rows()-1][ContingencyTable.cols()-1], 2);
-  //  std::cout << "Denom:" << combination(ContingencyTable[ContingencyTable.rows()-1][ContingencyTable.cols()-1], 2) << std::endl;
+   // std::cout << "Denom:" << combination(ContingencyTable[ContingencyTable.rows()-1][ContingencyTable.cols()-1], 2) << std::endl;
   double MaxIndex=0.5*(ExpectedIndexI+ExpectedIndexJ);
+	// std::cout << "MaxIndex:" << MaxIndex << std::endl;
+	// std::cout << "ExpectedIndex:" << ExpectedIndex << std::endl;
 
   return (Index-ExpectedIndex)/(MaxIndex-ExpectedIndex);
 }
